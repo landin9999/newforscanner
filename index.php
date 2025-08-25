@@ -88,6 +88,8 @@ function bad(string $msg, int $code=400): void {
 
 /* ---------- Routing ---------- */
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+if (isset($_GET['new'])) { $path = '/new'; }   // <-- make ?new=1 hit the /new route
+
 
 /* Root w/o params: quick alive */
 if ($path === '/' && !isset($_GET['c']) && !isset($_GET['go']) && !isset($_GET['new'])) {
