@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Let real files/folders pass
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Everything else → index.php  (so /new, /anything hits index.php)
+RewriteRule ^ index.php [QSA,L]
